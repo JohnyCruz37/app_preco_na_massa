@@ -1,0 +1,6 @@
+.venv
+.env
+KEY.py
+/files
+__pycache__
+*.pyc
