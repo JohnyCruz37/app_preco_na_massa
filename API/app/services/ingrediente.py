@@ -19,6 +19,7 @@ def create_ingrediente(ingrediente_data: IngredienteCreate, repo: IngredienteRep
         quantidade_compra = ingrediente_data.quantidade_compra,
         preco_compra = ingrediente_data.preco_compra,
         unidade_medida = ingrediente_data.unidade_medida,
+        quantidade_unidade_medida = ingrediente_data.quantidade_unidade_medida,
         idLista = lista.idListas
     )
     try:

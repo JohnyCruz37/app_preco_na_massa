@@ -9,6 +9,7 @@ class Ingrediente(Base):
     quantidade_compra = Column(Integer, nullable=False)
     preco_compra = Column(Float, nullable=False)
     unidade_medida = Column(String(5), nullable=False)
+    quantidade_unidade_medida = Column(Float, nullable=False)
     idLista = Column(Integer, ForeignKey('listas.idListas'), nullable=False)
 
     lista = relationship('Listas', back_populates='ingredientes')

@@ -46,6 +46,8 @@ class IngredienteRepository:
             ingrediente.preco_compra = ingrediente_data.preco_compra
         if ingrediente_data.unidade_medida is not None:
             ingrediente.unidade_medida = ingrediente_data.unidade_medida
+        if quantidade_unidade_medida is not None:
+            ingrediente.quantidade_unidade_medida = quantidade_unidade_medida
 
         self.db.commit()
         self.db.refresh(ingrediente)
