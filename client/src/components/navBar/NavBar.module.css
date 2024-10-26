@@ -1,0 +1,45 @@
+.NavBar{
+    background-color: var(--bg-color-secondary);
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 -1px 8px #0000008a;
+    z-index: 10;
+}
+
+.icone{
+    color: var(--primary);
+    transition: .3s all;
+}
+.icone:hover{
+    color: var(--secondary)
+}
+
+.listaItensMenu{
+    list-style: none;
+    padding: 0;
+}
+
+.itemMenu{
+    border-bottom: 1px solid var(--font-color);
+    margin-bottom: 1rem;
+    padding: 10px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    text-transform: uppercase;
+
+    transition: color .3s ease;
+
+}
+
+.itemMenu h6{
+    margin: 0;
+    margin-left: 1rem;
+}
+
+.itemMenu:hover{
+    color: var(--secondary);
+}

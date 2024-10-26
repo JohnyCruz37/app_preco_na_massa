@@ -1,0 +1,130 @@
+:root{
+    --font-color: #100503;
+    --bg-color-primary: #F8D3B2;
+    --bg-color-secondary: #CBAC95;
+    --primary: #623A2D;
+    --placeholder-primary: #623a2daf;
+    --secondary: #BC5624;
+    --alert-error: #FF5D47;
+    --alert-success: #768714;
+    --alert-info-warning: #DE9E55;
+
+    --font: 'Comfortaa', sans-serif;
+}
+
+html, body{
+    font-family: var(--font);
+    color: var(--font-color);
+    background-color: var(--bg-color-primary);
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: bold;
+}
+
+p, span{
+    font-weight: normal;
+}
+span{
+    font-size: 12px;
+}
+
+/* blocos */
+.bloco, .bloco-reto, .bloco-sombra, 
+.bloco-reto-sombra, .bloco-sem-contorno, .bloco-sec, .bloco-sec-sombra{
+    padding: 10px;
+}
+.bloco, .bloco-reto, .bloco-sombra, .bloco-reto-sombra, .bloco-sem-contorno{
+    background-color: var(--bg-color-primary);
+}
+.bloco, .bloco-reto, .bloco-sombra, .bloco-reto-sombra, .bloco-sec-sombra{
+    border: 1px solid var(--font-color);
+}
+.bloco, .bloco-sombra, .bloco-sem-controno, .bloco-sec-sombra, .bloco-sem-contorno{
+    border-radius: 12px;
+}
+
+.bloco-sombra, .bloco-reto-sombra, .bloco-sec-sombra{
+    box-shadow: 3px 3px 4px #000000e8;
+}
+
+.bloco-sec, .bloco-sec-sombra{
+    background-color: var(--bg-color-secondary);
+}
+
+label{
+    width: 100%;
+    padding: 0 1rem;
+}
+input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--font-color);
+    width: 100%;
+    color: var(--font-color);
+}
+input::placeholder{
+    color: var(--placeholder-primary);
+}
+input:focus{
+    outline: none;
+    background-color: var(--bg-color-secondary);
+}
+
+.botoes{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.botoes button{
+    margin-bottom: 1rem;
+}
+
+button{
+    border: none;
+    border-radius: 5rem;
+    padding: 5px 15px;
+    color: var(--font-color);
+    font-weight: bold;
+    transition: .3s all;
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(.95);
+}
+
+.btn-primary{
+    background-color: var(--primary);
+    color: var(--bg-color-secondary);
+}
+
+.btn-secondary{
+    background-color: var(--secondary);
+}
+
+.btn-danger{
+    background-color: var(--alert-error);
+}
+.btn-success{
+    background-color: var(--alert-success);
+}
+.btn-warning{
+    background-color: var(--alert-info-warning);
+}
+
+a{
+    color: var(--font-color);
+    text-decoration: underline;
+    transition: .4s all;
+}
+a:hover{
+    color: var(--primary);
+}
+
+.mainPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
