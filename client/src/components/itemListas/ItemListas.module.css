@@ -1,0 +1,12 @@
+.itemLista{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+td span{
+    color: var(--secondary);
+}
+
+.quantidade{
+    text-align: center;
+}

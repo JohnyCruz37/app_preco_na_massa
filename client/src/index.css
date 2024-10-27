@@ -114,6 +114,7 @@ button:hover{
 }
 
 a{
+    display: block;
     color: var(--font-color);
     text-decoration: underline;
     transition: .4s all;
@@ -127,4 +128,12 @@ a:hover{
     align-items: center;
     justify-content: center;
     height: 100vh;
+}
+
+.icone{
+    color: var(--primary);
+    transition: .3s all;
+}
+.icone:hover{
+    color: var(--secondary)
 }

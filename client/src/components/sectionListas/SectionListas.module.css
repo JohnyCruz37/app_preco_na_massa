@@ -1,0 +1,8 @@
+.sectionLista{
+    background-color: var(--bg-color-secondary);
+    margin: 0 10px;
+}
+
+.tabela{
+    width: 100%;
+}

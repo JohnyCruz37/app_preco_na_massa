@@ -1,0 +1,14 @@
+.headerLista{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.areaTitulo{
+    text-align: center;
+}
+
+.areaTitulo h2{
+    margin: 0;
+}

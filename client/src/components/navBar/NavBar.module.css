@@ -7,20 +7,12 @@
     z-index: 10;
 }
 
-.icone{
-    color: var(--primary);
-    transition: .3s all;
-}
-.icone:hover{
-    color: var(--secondary)
-}
-
 .listaItensMenu{
     list-style: none;
     padding: 0;
 }
 
-.itemMenu{
+.itemMenu a{
     border-bottom: 1px solid var(--font-color);
     margin-bottom: 1rem;
     padding: 10px 0;
@@ -32,6 +24,7 @@
     text-transform: uppercase;
 
     transition: color .3s ease;
+    text-decoration: none;
 
 }
 
