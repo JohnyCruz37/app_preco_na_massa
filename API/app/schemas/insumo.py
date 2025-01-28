@@ -11,7 +11,7 @@ class InsumoInDB(InsumoCreate):
     idLista: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class InsumoUpdate(BaseModel):
     nome: Optional[str] = None
@@ -19,7 +19,7 @@ class InsumoUpdate(BaseModel):
     preco_unidade: Optional[float] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class InsumoResponse(BaseModel):
     idInsumos: int
@@ -29,7 +29,7 @@ class InsumoResponse(BaseModel):
     idLista: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class InsumoDeleteResponse(BaseModel):
     message: str

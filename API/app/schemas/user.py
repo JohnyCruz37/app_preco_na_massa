@@ -1,17 +1,18 @@
 from pydantic import BaseModel, EmailStr, Field
+from typing import Optional
 
 class UserCreate(BaseModel):
     nome: str
     email: EmailStr
-    celular: str = Field(..., pattern=r'^\+[1-9]\d{1,14}$')
+    celular: str = Field(..., pattern=r'^\d{11}$')
     senha: str
-    pro_labore: float = 0.00
+    pro_labore: Optional[float] = None
 
 class UserInDB(UserCreate):
     idUsuario: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserLogin(BaseModel):
     email: EmailStr
@@ -25,7 +26,7 @@ class UserResponse(BaseModel):
     pro_labore: float
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserDeleteResponse(BaseModel):
     message: str

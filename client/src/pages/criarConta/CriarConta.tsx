@@ -1,40 +1,121 @@
 import style from "./CriarConta.module.css"
-
+import { useCriarConta } from "./useCriarConta"
 function CriarConta() {
+  const { formData, errors, handleChange, handleBlur,  handleSubmit } = useCriarConta();
+
+
   return (
     <main className={`mainPage`}>
       <section className={`bloco-sec-sombra ${style.blocoCriarConta}`}>         
           <article className={`bloco-sem-contorno`}>
             <h1>Faça seu Cadastro agora!</h1>
 
-            <form className={``}>
+            <form className={``} onSubmit={handleSubmit}>
               <fieldset className="mb-3 ">
-                <label htmlFor="email">Nome:
-                  <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required />
+                <label htmlFor="name">Nome:
+                  <input 
+                    required 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    placeholder="Digite seu nome" 
+                    value={formData.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {errors.name && <p className="error">{errors.name}</p>}
                 </label>
-                <label htmlFor="email">Celular:
-                  <input type="tel" name="celular" id="celular" placeholder="Digite seu celular" required />
+                <label htmlFor="lastname">sobrenome:
+                  <input 
+                    required 
+                    type="text" 
+                    name="lastName" 
+                    id="lastname" 
+                    placeholder="Digite seu sobrenome" 
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {errors.lastName && <p className="error">{errors.lastName}</p>}
+                </label>
+                
+                <label htmlFor="phone">Celular:
+                  <input 
+                    required 
+                    type="tel" 
+                    name="phone" 
+                    id="phone" 
+                    placeholder="Digite seu celular"
+                    value={formData.phone}
+                    onChange={handleChange} 
+                    onBlur={handleBlur}
+                  />
+                  {errors.phone && <p className="error">{errors.phone}</p>}
                 </label>
               </fieldset>
 
               <fieldset className="mb-3">
                 <label htmlFor="email">E-mail:
-                  <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required />
+                  <input 
+                    required 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    placeholder="Digite seu e-mail"
+                    value={formData.email}
+                    onChange={handleChange} 
+                    onBlur={handleBlur}
+                  />
+                  {errors.email && <p className="error">{errors.email}</p>}
                 </label>
-                <label htmlFor="email">Confirmar E-mail:
-                  <input type="email" name="confirm-email" id="confirm-email" placeholder="Confirme seu e-mail" required />
+                <label htmlFor="confirmEmail">Confirmar E-mail:
+                  <input 
+                    required 
+                    type="email" 
+                    name="confirmEmail" 
+                    id="confirmEmail" 
+                    placeholder="Confirme seu e-mail" 
+                    value={formData.confirmEmail}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+
+                  />
+                  {errors.confirmEmail && <p className="error">{errors.confirmEmail}</p>}
                 </label>
               </fieldset>
 
               <fieldset className="mb-5">
-                <label htmlFor="senha">Senha:
-                  <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required />
+                <label htmlFor="password">Senha:
+                  <input 
+                    required 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder="Digite sua senha" 
+                    value={formData.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    
+                  />
+                  {errors.password && <p className="error">{errors.password}</p>}
                 </label>
-                <label htmlFor="senha">Confirmar Senha:
-                  <input type="password" name="confirm-senha" id="confirm-senha" placeholder="Confirme sua senha" required />
+                <label htmlFor="confirmPassword">Confirmar Senha:
+                  <input 
+                    required 
+                    type="password" 
+                    name="confirmPassword" 
+                    id="confirmPassword" 
+                    placeholder="Confirme sua senha" 
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    
+                  />
+                  {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
                 </label>
               </fieldset>
-              <button type="submit" className={`btn-primary w-100`}>Cadastrar</button>
+              <button 
+              type="submit" className={`btn-primary w-100`}>Cadastrar</button>
             </form>
 
             <div className={`text-center mt-3`}>

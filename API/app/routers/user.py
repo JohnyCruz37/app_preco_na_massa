@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Request
 from sqlalchemy.orm import Session
 from app.schemas.user import UserCreate, UserResponse, UserDeleteResponse
 from app.services.user import create_user, delete_user
@@ -8,7 +8,9 @@ from app.repository.user import UserRepository
 router = APIRouter()
 
 @router.post("/", response_model=UserResponse)
-def register_user(user: UserCreate, db: Session = Depends(get_db)):
+async def register_user(request: Request, user: UserCreate, db: Session = Depends(get_db)):
+    body = await request.body()
+    print(f"Request: {body}")
     try:
         user_repository = UserRepository(db)
         db_user = create_user(user, user_repository)

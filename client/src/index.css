@@ -137,3 +137,7 @@ a:hover{
 .icone:hover{
     color: var(--secondary)
 }
+
+.error{
+    color: var(--alert-error);
+}

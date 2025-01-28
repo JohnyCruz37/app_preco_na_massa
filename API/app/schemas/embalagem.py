@@ -11,7 +11,7 @@ class InsumoInDB(EmbalagemCreate):
     idLista: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class EmbalagemUpdate(BaseModel):
     nome: Optional[str] = None
@@ -19,7 +19,7 @@ class EmbalagemUpdate(BaseModel):
     preco_unidade: Optional[float] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class EmbalagemResponse(BaseModel):
     idEmbalagens: int
@@ -29,7 +29,7 @@ class EmbalagemResponse(BaseModel):
     idLista: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class EmbalagemDeleteResponse(BaseModel):
     message: str

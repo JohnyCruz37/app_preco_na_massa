@@ -13,7 +13,7 @@ class IngredienteInDB(IngredienteCreate):
     idLista: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class IngredienteUpdate(BaseModel):
     nome: Optional[str] = Field(None, min_length=3, max_length=50)
@@ -23,7 +23,7 @@ class IngredienteUpdate(BaseModel):
     quantidade_unidade_medida: Optional[int] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class IngredienteResponse(BaseModel):
     idIngredientes: int
@@ -35,7 +35,7 @@ class IngredienteResponse(BaseModel):
     idLista: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class IngredienteDeleteResponse(BaseModel):
     message: str
