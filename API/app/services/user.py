@@ -6,16 +6,19 @@ from app.dominio.value_objects.senha import Senha
 from app.dominio.value_objects.nome import Nome
 
 def create_user(user_data: UserCreate, repo: UserRepository):  
-    senha_vo = Senha(user_data.senha) 
-    nome_vo = Nome(user_data.nome)     
-    user = User(
-        nome = nome_vo.nome,
-        email=user_data.email,
-        celular=user_data.celular,
-    )
-    user.set_senha(senha_vo)
     try:
-        return repo.create(user)
+        senha_vo = Senha(user_data.senha) 
+        nome_vo = Nome(user_data.nome)
+        user = User(
+            nome = nome_vo.nome,
+            email=user_data.email,
+            celular=user_data.celular,
+        )
+        user.set_senha(senha_vo)
+        repo.create(user)
+        return 
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao criar usuário: {str(e)}")
 

@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from app.models.user import User
@@ -7,16 +8,20 @@ class UserRepository:
     
     def create(self, user):
         try:
+            if self.get_by_email(user.email):
+                raise HTTPException(status_code=409, detail="O email informado já está sendo utilizado.")
+            
+            if self.get_by_celular(user.celular):
+                raise HTTPException(status_code=409, detail="O celular informado já está sendo utilizado.")
+
+
             self.db.add(user)
             self.db.commit()
             self.db.refresh(user)
             return user
-        except IntegrityError:
+        except IntegrityError as e:
             self.db.rollback()
-            raise ValueError(status_code=409, detail="Usuário já cadastrado")
-        except Exception as e:
-            self.db.rollback()
-            raise Exception(f"Erro ao criar usuário: {str(e)}")
+            raise HTTPException(status_code=409, detail=f"Erro de integridade ==> {e}")
     
     def delete(self, user_id: int):
         user = self.db.query(User).filter(User.idUsuario == user_id).first()
@@ -33,3 +38,10 @@ class UserRepository:
             return user
         else:
             raise ValueError("Usuário não encontrado")
+    
+    def get_by_email(self, email:str):
+        return self.db.query(User).filter(User.email == email).first()
+    
+    def get_by_celular(self, celular:str):
+        return self.db.query(User).filter(User.celular == celular).first()
+            

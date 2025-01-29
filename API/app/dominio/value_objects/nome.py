@@ -1,10 +1,11 @@
 import re
 
 class Nome:
+    EXCECOES = {"da", "de", "do", "das", "dos", "e"}
     def __init__(self, nome):
         if not self._validate_nome_e_sobrenome(nome):
             raise ValueError("Nome ou sobrenome inválido. Deve conter entre 3 e 50 caracteres.")
-        self.nome = nome
+        self.nome = nome.strip()
     
     def _validate_nome_e_sobrenome(self, string_nome:str) -> bool:
         """
@@ -12,12 +13,17 @@ class Nome:
                 1. Nome e sobrenome separados por um único espaço.
                 3. Tanto o nome quanto o sobrenome devem ter pelo menos 3 caracteres.
         """
-        nome_e_sobrenome = string_nome.split()
-        if len(nome_e_sobrenome)!= 2:
+        nome_e_sobrenome = string_nome.strip().split()
+        if len(nome_e_sobrenome) < 2:
             return False
-        nome, sobrenome = nome_e_sobrenome
-        return self._validate_string_nome(nome) and self._validate_string_nome(sobrenome)
-    
+        
+        for i, parte in enumerate(nome_e_sobrenome):
+            if parte.lower() in self.EXCECOES and i not in {0, len(nome_e_sobrenome)-1}:
+                continue
+            if not self._validate_string_nome(parte):
+                return False
+        
+        return True
     
     def _validate_string_nome(self, string:str) -> bool:
         """
@@ -25,8 +31,8 @@ class Nome:
                 1. Tem entre 3 e 50 caracteres.
                 2. Contém apenas letras e espaços.
         """
-        if len(string) < 3 or len(string) > 50:
+        if not (3 <= len(string) <= 50):
             return False
-        if not re.match(r"^[a-zA-Z\s]+$", string):
+        if not re.match(r"^[\wÀ-ÿ]+$", string, re.UNICODE):
             return False
         return True

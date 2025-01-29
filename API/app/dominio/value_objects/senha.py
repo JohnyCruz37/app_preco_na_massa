@@ -2,7 +2,7 @@ import re
 from passlib.context import CryptContext
 from typing import Any
 
-senha_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+senha_context = CryptContext(schemes=["bcrypt"], bcrypt__rounds=12)
 
 class Senha:
     def __init__(self, senha: str):

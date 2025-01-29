@@ -24,6 +24,10 @@ interface Errors {
 }
 
 export const useCriarConta = () => {
+    const [errors, setErrors] = useState<Errors>({});
+    const [alert, setAlert] = useState<{type: string, message: string} | null> (null); 
+
+
     const [formData, setFormData] = useState<FormData>({
         name: "",
         lastName: "",
@@ -34,7 +38,6 @@ export const useCriarConta = () => {
         confirmPassword: ""
     });
 
-    const [errors, setErrors] = useState<Errors>({});
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -88,7 +91,6 @@ export const useCriarConta = () => {
         e.preventDefault();
 
         if(validateForm()) {
-            console.log("Formulário válido");
             const dataPush: FormDataPush = {
                 nome: concatNomeSobrenome(formData.name, formData.lastName),
                 email: formData.email,
@@ -98,17 +100,21 @@ export const useCriarConta = () => {
             
             try {
                 const response = await createUser(dataPush);
-                console.info("Usuário criado com sucesso", response.data);
+                setAlert({type: "success", message: response.data})
             } catch (error) {
-                console.error("Erro ao criar usuário", error);
+                setAlert({type: 'danger', message: error.response.data.detail})
             }
 
         } else {
-            console.log("Formulário inválido");
+            setAlert({type: 'danger', message: "Formulário inválido."})
         }
     };
 
-    return {formData, errors, handleChange, handleBlur, handleSubmit};
+    const handleCloseAlert = () => {
+        setAlert(null)
+    }
+
+    return {formData, errors, handleChange, handleBlur, handleSubmit, alert, handleCloseAlert};
 
 }
 

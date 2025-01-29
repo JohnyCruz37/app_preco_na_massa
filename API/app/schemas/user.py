@@ -19,11 +19,7 @@ class UserLogin(BaseModel):
     senha: str
 
 class UserResponse(BaseModel):
-    idUsuario: int
-    nome: str
-    email: EmailStr
-    celular: str
-    pro_labore: float
+    message: str
 
     class Config:
         from_attributes = True

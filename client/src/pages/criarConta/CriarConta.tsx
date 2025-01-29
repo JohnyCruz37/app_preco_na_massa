@@ -1,14 +1,15 @@
 import style from "./CriarConta.module.css"
 import { useCriarConta } from "./useCriarConta"
+import { Alert } from "../../components/alert/Alert";
 function CriarConta() {
-  const { formData, errors, handleChange, handleBlur,  handleSubmit } = useCriarConta();
+  const { formData, errors, handleChange, handleBlur,  handleSubmit, alert, handleCloseAlert } = useCriarConta();
 
 
   return (
     <main className={`mainPage`}>
       <section className={`bloco-sec-sombra ${style.blocoCriarConta}`}>         
           <article className={`bloco-sem-contorno`}>
-            <h1>Faça seu Cadastro agora!</h1>
+            <h1>Faça seu Cadastro agora!</h1>            
 
             <form className={``} onSubmit={handleSubmit}>
               <fieldset className="mb-3 ">
@@ -118,6 +119,9 @@ function CriarConta() {
               type="submit" className={`btn-primary w-100`}>Cadastrar</button>
             </form>
 
+            {alert && (
+              <Alert type={alert.type} message={alert.message} onClose={handleCloseAlert} />
+            )}
             <div className={`text-center mt-3`}>
               <span>
                 <a href="#">Login</a>

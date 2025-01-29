@@ -8,13 +8,11 @@ from app.repository.user import UserRepository
 router = APIRouter()
 
 @router.post("/", response_model=UserResponse)
-async def register_user(request: Request, user: UserCreate, db: Session = Depends(get_db)):
-    body = await request.body()
-    print(f"Request: {body}")
+def register_user(request: Request, user: UserCreate, db: Session = Depends(get_db)):
     try:
         user_repository = UserRepository(db)
         db_user = create_user(user, user_repository)
-        return db_user
+        return {"message": "Usuário criado com sucesso"}
     except HTTPException as e:
         raise e
     except Exception as e:
